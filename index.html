@@ -1,637 +1,349 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#123c30">
-<title>Rekening Pembayaran | LUKMANTO</title>
+<meta name="theme-color" content="#123d32">
+<title>Rekening Pembayaran | Lukmanto</title>
 
 <style>
-*{box-sizing:border-box}
-
-:root{
-  --green:#123c30;
-  --gold:#c49343;
-  --cream:#f8f0df;
-  --ink:#172b27;
+* {
+  box-sizing: border-box;
 }
 
-body{
-  margin:0;
-  color:var(--ink);
-  font-family:Arial,Helvetica,sans-serif;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f0e5;
+  color: #263b32;
+}
+
+.hero {
+  padding: 38px 18px 32px;
+  text-align: center;
+  color: #fff5df;
   background:
-    radial-gradient(ellipse at 50% 0%,#fffdf5 0%,transparent 50%),
-    linear-gradient(135deg,#e8ddc3,#fff9ec 48%,#e9dfc9);
+    radial-gradient(circle at top, #d5bd82 0%, transparent 40%),
+    linear-gradient(135deg, #103c32, #1c7053);
 }
 
-.page{
-  max-width:760px;
-  margin:auto;
-  overflow:hidden;
-  min-height:100vh;
-  box-shadow:0 0 45px #5a442016;
+.ornament {
+  font-size: 32px;
+  color: #e6ce94;
 }
 
-/* BAGIAN ATAS */
-.hero{
-  position:relative;
-  overflow:hidden;
-  text-align:center;
-  padding:35px 16px 30px;
-  background:
-    radial-gradient(ellipse at 50% 75%,#fffdf4 0%,#f7ecd3 50%,transparent 76%),
-    linear-gradient(135deg,#123c30,#1e5945);
-  border-bottom:4px solid var(--gold);
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(29px, 7vw, 39px);
+  margin: 8px 0;
 }
 
-.hero:before,.hero:after{
-  content:"";
-  position:absolute;
-  top:-70px;
-  width:180px;
-  height:290px;
-  border:2px solid #d5b16d77;
-  border-radius:100px 100px 0 0;
-  pointer-events:none;
+.hero p {
+  margin: 8px 0 0;
+  font-size: 15px;
 }
 
-.hero:before{
-  left:-65px;
-  transform:rotate(-20deg);
-}
-.hero:after{
-  right:-65px;
-  transform:rotate(20deg);
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 0 15px;
 }
 
-.arch{
-  position:relative;
-  z-index:1;
-  width:84px;
-  height:42px;
-  margin:0 auto 5px;
-  color:#b6812f;
-  font-size:38px;
-  line-height:42px;
+.notice {
+  text-align: center;
+  color: #777361;
+  line-height: 1.6;
+  font-size: 14px;
+  margin: 0 0 20px;
 }
 
-.hero h1{
-  position:relative;
-  z-index:1;
-  margin:0;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(34px,7vw,51px);
-  line-height:.98;
-  letter-spacing:-1.5px;
-  color:#163b2d;
-  text-shadow:0 2px 0 #ffffff90;
+.card {
+  background: #fff;
+  border: 1px solid #e8e0d1;
+  border-radius: 25px;
+  padding: 24px 21px;
+  margin-bottom: 19px;
+  box-shadow: 0 8px 25px rgba(50, 55, 35, .07);
+  position: relative;
+  overflow: hidden;
 }
 
-.subtitle{
-  position:relative;
-  z-index:1;
-  margin:20px auto 0;
-  display:table;
-  padding:8px 26px;
-  border:1px solid #d7b678;
-  border-radius:40px;
-  background:linear-gradient(110deg,#f3dfb5,#fff4d9,#e8ce97);
-  color:#5c3b17;
-  font-family:Georgia,serif;
-  font-size:13px;
-  letter-spacing:3px;
+.card::after {
+  content: "✦";
+  position: absolute;
+  right: 16px;
+  top: 28px;
+  font-size: 62px;
+  color: #e9dfc5;
+  pointer-events: none;
 }
 
-.subtitle strong{
-  display:block;
-  margin-top:4px;
-  font-size:23px;
-  letter-spacing:4px;
+.bank {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  z-index: 1;
 }
 
-.hero-note{
-  position:relative;
-  z-index:1;
-  margin:16px 0 0;
-  color:#354a3b;
-  font-size:14px;
+.logo {
+  width: 76px;
+  height: 68px;
+  flex-shrink: 0;
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 23px;
+  letter-spacing: -1px;
 }
 
-/* PENGANTAR */
-.intro{
-  text-align:center;
-  padding:22px 18px 14px;
+.mega {
+  background: linear-gradient(135deg, #111, #37312b);
+  color: #f8c33c;
+  border: 2px solid #d7a52b;
 }
 
-.intro p{
-  margin:0;
-  font-family:Georgia,serif;
-  color:#786445;
-  font-size:14px;
-  line-height:1.7;
+.shopeepay {
+  background: linear-gradient(135deg, #ee4d2d, #ff8b45);
 }
 
-.ornament{
-  color:#b38740;
-  letter-spacing:8px;
-  margin-bottom:6px;
+.bri {
+  background: linear-gradient(135deg, #0753a4, #1598e5);
+  font-size: 25px;
 }
 
-/* KARTU REKENING */
-.accounts{
-  padding:10px 17px 5px;
+.seabank {
+  background: linear-gradient(135deg, #f04b19, #ff963f);
+  font-size: 29px;
 }
 
-.account{
-  --accent:#a77931;
-  --soft:#fff8e9;
-  display:grid;
-  grid-template-columns:34% minmax(0,1fr);
-  gap:0;
-  margin-bottom:13px;
-  overflow:hidden;
-  position:relative;
-  border:2px solid #fffdf6;
-  border-radius:23px;
-  background:var(--soft);
-  box-shadow:
-    0 5px 15px #46371d18,
-    0 0 0 1px #dfd0b6;
+.dana {
+  background: linear-gradient(135deg, #0875ed, #45b8ff);
+  font-size: 27px;
 }
 
-.account:after{
-  content:"✧";
-  position:absolute;
-  right:12px;
-  top:1px;
-  color:var(--accent);
-  opacity:.15;
-  font-size:75px;
-  pointer-events:none;
+.bank h2 {
+  font-size: 20px;
+  margin: 0 0 7px;
+  line-height: 1.25;
 }
 
-.brand{
-  min-height:145px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:8px;
-  padding:12px 7px;
-  color:white;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(140deg,var(--brand1),var(--brand2));
+.owner {
+  color: #858b87;
+  font-size: 14px;
 }
 
-.brand:before{
-  content:"";
-  position:absolute;
-  inset:7px;
-  border:1px solid #ffffff55;
-  border-radius:14px;
-  pointer-events:none;
+.number {
+  font-size: clamp(21px, 5.7vw, 29px);
+  font-weight: 750;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+  margin: 25px 0 20px;
+  position: relative;
+  z-index: 1;
 }
 
-.brand:after{
-  content:"";
-  position:absolute;
-  width:150px;
-  height:150px;
-  border:1px solid #ffffff27;
-  border-radius:50%;
-  right:-90px;
-  bottom:-95px;
-  box-shadow:0 0 0 13px #ffffff0c,0 0 0 27px #ffffff0b;
+.copy {
+  border: 0;
+  border-radius: 13px;
+  background: #176b4d;
+  color: white;
+  padding: 15px 19px;
+  font-size: 15px;
+  font-weight: bold;
+  min-height: 53px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
-.brand-icon{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  z-index:1;
-  font-size:37px;
-  line-height:1;
-  font-weight:900;
-  letter-spacing:-2px;
+.copy:active {
+  transform: scale(.97);
 }
 
-.brand-name{
-  position:relative;
-  z-index:1;
-  font-weight:800;
-  font-size:clamp(12px,2.6vw,20px);
-  line-height:1.05;
-  letter-spacing:-.5px;
+.copy:hover {
+  background: #10563d;
 }
 
-.brand-name small{
-  display:block;
-  margin-top:4px;
-  font-size:10px;
-  letter-spacing:2px;
+.footer {
+  text-align: center;
+  padding: 18px 20px 36px;
+  color: #777361;
+  font-family: Georgia, serif;
+  line-height: 1.8;
+  font-size: 15px;
 }
 
-.details{
-  position:relative;
-  z-index:1;
-  padding:17px 12px 15px 17px;
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
 }
 
-.service{
-  margin:0 0 7px;
-  font-size:clamp(15px,3.5vw,20px);
-  font-weight:800;
-  line-height:1.25;
-}
+@media (max-width: 380px) {
+  .card {
+    padding: 20px 16px;
+  }
 
-.owner{
-  color:#737d77;
-  font-size:13px;
-  margin-bottom:10px;
-}
+  .logo {
+    width: 62px;
+    height: 60px;
+    font-size: 20px;
+  }
 
-.number{
-  font-size:clamp(19px,4.7vw,28px);
-  font-weight:850;
-  letter-spacing:.5px;
-  line-height:1.25;
-  overflow-wrap:anywhere;
-  margin-bottom:13px;
-}
+  .bank {
+    gap: 11px;
+  }
 
-.copy{
-  align-self:flex-start;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  min-height:42px;
-  max-width:100%;
-  padding:10px 15px;
-  border:1px solid #ffffff80;
-  border-radius:12px;
-  color:white;
-  background:linear-gradient(135deg,var(--brand1),var(--brand2));
-  box-shadow:0 3px 8px #00000013;
-  font-size:13px;
-  font-weight:800;
-  cursor:pointer;
-  transition:transform .15s,filter .15s;
-}
+  .bank h2 {
+    font-size: 18px;
+  }
 
-.copy:active{transform:scale(.96)}
-.copy:hover{filter:brightness(1.07)}
-.copy svg{width:17px;height:17px;flex-shrink:0}
-.copy.success{background:#176b4d}
-
-/* WARNA TIAP LAYANAN */
-.mega{
-  --brand1:#151515;
-  --brand2:#51401e;
-  --soft:#fff9ee;
-  --accent:#c79b42;
-}
-
-.shopeepay{
-  --brand1:#ef401b;
-  --brand2:#ff8432;
-  --soft:#fff5ed;
-  --accent:#f15a34;
-}
-
-.bri{
-  --brand1:#0752a6;
-  --brand2:#087fe1;
-  --soft:#eff7ff;
-  --accent:#1477d4;
-}
-
-.seabank{
-  --brand1:#ed4717;
-  --brand2:#ff923a;
-  --soft:#fff5e9;
-  --accent:#ed5a20;
-}
-
-.dana{
-  --brand1:#0875ed;
-  --brand2:#36b2ff;
-  --soft:#eef7ff;
-  --accent:#1786ef;
-}
-
-/* BAGIAN BAWAH */
-.benefits{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  margin:16px 17px 0;
-  padding:16px 5px;
-  border-radius:18px;
-  border:1px solid #dfc89f;
-  background:#fff8e9d9;
-}
-
-.benefit{
-  text-align:center;
-  padding:0 3px;
-  border-right:1px solid #d5c19a;
-  color:#674719;
-  font-size:11px;
-  line-height:1.4;
-}
-
-.benefit:last-child{border-right:0}
-
-.benefit-icon{
-  display:grid;
-  place-items:center;
-  margin:0 auto 7px;
-  width:35px;
-  height:35px;
-  border:1px solid #b68a43;
-  border-radius:50%;
-  font-size:19px;
-}
-
-.footer{
-  padding:20px 20px 30px;
-  text-align:center;
-  color:#60472b;
-  font-family:Georgia,serif;
-  line-height:1.8;
-  font-size:14px;
-}
-
-.footer .diamond{
-  color:#a77a32;
-  letter-spacing:7px;
-}
-
-.footer strong{
-  font-size:16px;
-  font-weight:normal;
-  font-style:italic;
-}
-
-.toast{
-  position:fixed;
-  bottom:22px;
-  left:50%;
-  transform:translateX(-50%) translateY(15px);
-  opacity:0;
-  visibility:hidden;
-  z-index:10;
-  background:#123c30;
-  color:white;
-  padding:13px 20px;
-  border-radius:30px;
-  box-shadow:0 5px 25px #0003;
-  font-size:14px;
-  transition:.25s;
-  text-align:center;
-  width:max-content;
-  max-width:90%;
-}
-
-.toast.show{
-  opacity:1;
-  visibility:visible;
-  transform:translateX(-50%) translateY(0);
-}
-
-@media(max-width:370px){
-  .accounts{padding-left:11px;padding-right:11px}
-  .account{grid-template-columns:31% minmax(0,1fr)}
-  .brand{min-height:132px;padding:8px 4px}
-  .brand-icon{font-size:30px}
-  .details{padding:13px 8px 13px 11px}
-  .number{font-size:18px;letter-spacing:0}
-  .copy{font-size:11px;padding:9px 10px}
-  .service{font-size:14px}
-  .owner{font-size:11px}
-  .benefit{font-size:10px}
-}
-
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation:none!important;transition:none!important}
+  .copy {
+    padding: 13px 14px;
+    font-size: 14px;
+  }
 }
 </style>
 </head>
 
 <body>
-<div class="page">
 
 <header class="hero">
-  <div class="arch">☪</div>
-  <h1>Rekening<br>Pembayaran</h1>
-
-  <div class="subtitle">
-    ATAS NAMA
-    <strong>LUKMANTO</strong>
-  </div>
-
-  <p class="hero-note">
-    ✦ Mudah &nbsp; Aman &nbsp; Syariah &nbsp; Terpercaya ✦
-  </p>
+  <div class="ornament">❧ ✦ ❧</div>
+  <h1>Rekening Pembayaran</h1>
+  <p>ATAS NAMA <strong>LUKMANTO</strong></p>
+  <p>Mudah • Aman • Praktis</p>
 </header>
 
-<section class="intro">
-  <div class="ornament">✦ ── ◇ ── ✦</div>
-  <p>
-    Silakan pilih rekening tujuan pembayaran.<br>
-    Tekan tombol salin agar nomor tidak salah.
+<main class="container">
+  <p class="notice">
+    Silakan pilih rekening tujuan pembayaran,
+    kemudian tekan tombol salin.
   </p>
-</section>
 
-<main class="accounts">
-
-  <!-- BANK MEGA SYARIAH -->
-  <section class="account mega">
-    <div class="brand">
-      <div class="brand-icon">M</div>
-      <div class="brand-name">
-        BANK MEGA
-        <small>SYARIAH</small>
+  <section class="card">
+    <div class="bank">
+      <div class="logo mega">M</div>
+      <div>
+        <h2>Bank Mega Syariah</h2>
+        <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
-    <div class="details">
-      <h2 class="service">Bank Mega Syariah</h2>
-      <div class="owner">Atas nama LUKMANTO</div>
-      <div class="number">2013703206</div>
-      <button class="copy" onclick="salin('2013703206',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-          <rect x="8" y="7" width="12" height="14" rx="2"/>
-          <path d="M16 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/>
-        </svg>
-        <span>Salin nomor rekening</span>
-      </button>
-    </div>
+    <div class="number">2013703206</div>
+    <button class="copy"
+      onclick="salin('2013703206',this)">
+      ▣ Salin nomor rekening
+    </button>
   </section>
 
-  <!-- SHOPEEPAY -->
-  <section class="account shopeepay">
-    <div class="brand">
-      <div class="brand-icon">S</div>
-      <div class="brand-name">ShopeePay</div>
+  <section class="card">
+    <div class="bank">
+      <div class="logo shopeepay">S</div>
+      <div>
+        <h2>ShopeePay</h2>
+        <div class="owner">Atas nama LUKMANTO</div>
+      </div>
     </div>
-    <div class="details">
-      <h2 class="service">ShopeePay</h2>
-      <div class="owner">Atas nama LUKMANTO</div>
-      <div class="number">081325707659</div>
-      <button class="copy" onclick="salin('081325707659',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-          <rect x="8" y="7" width="12" height="14" rx="2"/>
-          <path d="M16 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/>
-        </svg>
-        <span>Salin nomor</span>
-      </button>
-    </div>
+    <div class="number">081325707659</div>
+    <button class="copy"
+      onclick="salin('081325707659',this)">
+      ▣ Salin nomor
+    </button>
   </section>
 
-  <!-- BRI -->
-  <section class="account bri">
-    <div class="brand">
-      <div class="brand-icon">BRI</div>
-      <div class="brand-name">BANK BRI</div>
+  <section class="card">
+    <div class="bank">
+      <div class="logo bri">BRI</div>
+      <div>
+        <h2>Bank BRI</h2>
+        <div class="owner">Atas nama LUKMANTO</div>
+      </div>
     </div>
-    <div class="details">
-      <h2 class="service">Bank BRI</h2>
-      <div class="owner">Atas nama LUKMANTO</div>
-      <div class="number">5346 0101 6087 538</div>
-      <button class="copy" onclick="salin('534601016087538',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-          <rect x="8" y="7" width="12" height="14" rx="2"/>
-          <path d="M16 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/>
-        </svg>
-        <span>Salin nomor rekening</span>
-      </button>
-    </div>
+    <div class="number">534601016087538</div>
+    <button class="copy"
+      onclick="salin('534601016087538',this)">
+      ▣ Salin nomor rekening
+    </button>
   </section>
 
-  <!-- SEABANK -->
-  <section class="account seabank">
-    <div class="brand">
-      <div class="brand-icon">S</div>
-      <div class="brand-name">SeaBank</div>
+  <section class="card">
+    <div class="bank">
+      <div class="logo seabank">S</div>
+      <div>
+        <h2>SeaBank</h2>
+        <div class="owner">Atas nama LUKMANTO</div>
+      </div>
     </div>
-    <div class="details">
-      <h2 class="service">SeaBank</h2>
-      <div class="owner">Atas nama LUKMANTO</div>
-      <div class="number">901178159236</div>
-      <button class="copy" onclick="salin('901178159236',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-          <rect x="8" y="7" width="12" height="14" rx="2"/>
-          <path d="M16 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/>
-        </svg>
-        <span>Salin nomor rekening</span>
-      </button>
-    </div>
+    <div class="number">901178159236</div>
+    <button class="copy"
+      onclick="salin('901178159236',this)">
+      ▣ Salin nomor rekening
+    </button>
   </section>
 
-  <!-- DANA -->
-  <section class="account dana">
-    <div class="brand">
-      <div class="brand-icon">D</div>
-      <div class="brand-name">DANA</div>
+  <section class="card">
+    <div class="bank">
+      <div class="logo dana">D</div>
+      <div>
+        <h2>DANA</h2>
+        <div class="owner">Atas nama LUKMANTO</div>
+      </div>
     </div>
-    <div class="details">
-      <h2 class="service">DANA</h2>
-      <div class="owner">Atas nama LUKMANTO</div>
-      <div class="number">081325707659</div>
-      <button class="copy" onclick="salin('081325707659',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-          <rect x="8" y="7" width="12" height="14" rx="2"/>
-          <path d="M16 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/>
-        </svg>
-        <span>Salin nomor</span>
-      </button>
-    </div>
+    <div class="number">081325707659</div>
+    <button class="copy"
+      onclick="salin('081325707659',this)">
+      ▣ Salin nomor
+    </button>
   </section>
-
 </main>
 
-<section class="benefits">
-  <div class="benefit">
-    <div class="benefit-icon">♢</div>
-    Aman &<br>Terpercaya
-  </div>
-  <div class="benefit">
-    <div class="benefit-icon">❋</div>
-    Mudah<br>Digunakan
-  </div>
-  <div class="benefit">
-    <div class="benefit-icon">◉</div>
-    Transaksi<br>Praktis
-  </div>
-  <div class="benefit">
-    <div class="benefit-icon">♧</div>
-    Layanan<br>Pembayaran
-  </div>
-</section>
-
 <footer class="footer">
-  <div class="diamond">─── ◆ ───</div>
-  <strong>
-    Semoga setiap transaksi menjadi keberkahan<br>
-    untuk kita semua.
-  </strong>
-  <p>Terima kasih telah melakukan pembayaran.</p>
+  <div class="features">
+    <span>♢ Aman & Terpercaya</span>
+    <span>♢ Mudah Digunakan</span>
+    <span>♢ Praktis</span>
+  </div>
+  ✦ Semoga setiap transaksi menjadi keberkahan ✦
+  <br>
+  Terima kasih telah melakukan pembayaran.
 </footer>
 
-</div>
-
-<div class="toast" id="toast" role="status" aria-live="polite">
-  ✓ Nomor berhasil disalin!
-</div>
-
 <script>
-let toastTimer;
-
-async function salin(nomor,tombol){
-  try{
-    if(navigator.clipboard && window.isSecureContext){
+async function salin(nomor, tombol) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
       await navigator.clipboard.writeText(nomor);
-    }else{
-      const input=document.createElement("textarea");
-      input.value=nomor;
-      input.setAttribute("readonly","");
-      input.style.position="fixed";
-      input.style.left="-9999px";
+    } else {
+      const input = document.createElement("textarea");
+      input.value = nomor;
+      input.style.position = "fixed";
+      input.style.left = "-9999px";
       document.body.appendChild(input);
       input.select();
-      const ok=document.execCommand("copy");
+
+      const berhasil = document.execCommand("copy");
       input.remove();
-      if(!ok) throw new Error("Gagal menyalin");
+
+      if (!berhasil) throw new Error("Gagal menyalin");
     }
 
-    const teks=tombol.querySelector("span");
-    const teksAwal=teks.textContent;
-
-    teks.textContent="Berhasil disalin!";
-    tombol.classList.add("success");
-
-    const toast=document.getElementById("toast");
-    toast.textContent="✓ Nomor berhasil disalin!";
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-    toastTimer=setTimeout(()=>{
-      toast.classList.remove("show");
-      teks.textContent=teksAwal;
-      tombol.classList.remove("success");
-    },1800);
-
-  }catch(error){
-    alert("Tidak dapat menyalin otomatis. Salin nomor ini secara manual: "+nomor);
+    const teksAwal = tombol.textContent;
+    tombol.textContent = "✓ Berhasil disalin!";
+    setTimeout(() => {
+      tombol.textContent = teksAwal;
+    }, 1800);
+  } catch (e) {
+    alert("Silakan salin nomor secara manual: " + nomor);
   }
 }
 </script>
