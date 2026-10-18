@@ -4,79 +4,275 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rekening Pembayaran LUKMANTO</title>
+<meta name="theme-color" content="#123d32">
+<title>Rekening Pembayaran | Lukmanto</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#f1f5f9;font-family:Arial,sans-serif;color:#172033}
-header{background:#0875e1;color:white;text-align:center;padding:28px 15px}
-header h1{margin:0 0 8px;font-size:27px}
-header p{margin:0}
-main{max-width:520px;margin:22px auto;padding:0 15px}
-.card{background:white;padding:18px;margin-bottom:14px;border-radius:14px;box-shadow:0 3px 12px #0000000d}
-.bank{font-weight:bold;font-size:18px}
-.owner{color:#64748b;font-size:14px;margin-top:7px}
-.number{font-size:20px;font-weight:bold;letter-spacing:1px;margin:17px 0;overflow-wrap:anywhere}
-button{background:#0875e1;color:white;border:0;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:bold;cursor:pointer}
-footer{text-align:center;color:#64748b;font-size:13px;padding:20px}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #26352e;
+  background: #f5f0e6;
+}
+
+.hero {
+  text-align: center;
+  padding: 42px 18px 38px;
+  color: #fff8e8;
+  background:
+    linear-gradient(135deg, #103c32eF, #17634ee8),
+    url("https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1200&q=85")
+    center/cover;
+}
+
+.moon {
+  font-size: 43px;
+  margin-bottom: 8px;
+}
+
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  margin: 0 0 12px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 600px;
+  margin: 22px auto;
+  padding: 0 15px;
+}
+
+.notice {
+  text-align: center;
+  color: #786344;
+  font-size: 13px;
+  margin: 20px 0;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 17px;
+  padding: 21px;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 7px 22px #26352e12;
+  border: 1px solid #e8e0d2;
+  animation: muncul .6s ease both;
+}
+
+.card::after {
+  content: "✦";
+  position: absolute;
+  right: 13px;
+  top: 7px;
+  font-size: 75px;
+  color: #d6bd8350;
+  pointer-events: none;
+}
+
+.bank {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 19px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.mega { background: linear-gradient(135deg,#252525,#9b741e); }
+.shopeepay { background: linear-gradient(135deg,#ed4d22,#ff8a35); }
+.bri { background: linear-gradient(135deg,#0754a7,#168ce1); }
+.sea { background: linear-gradient(135deg,#f04b19,#ff963f); }
+.dana { background: linear-gradient(135deg,#0875ed,#42b6ff); }
+
+.bank h2 {
+  font-size: 19px;
+  margin: 0 0 5px;
+}
+
+.owner {
+  color: #7c8581;
+  font-size: 13px;
+}
+
+.number {
+  position: relative;
+  z-index: 1;
+  font-size: 23px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
+  margin: 21px 0 17px;
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  border: 0;
+  border-radius: 11px;
+  padding: 13px 17px;
+  color: white;
+  background: #176b4d;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.copy:active {
+  transform: scale(.97);
+}
+
+.footer {
+  text-align: center;
+  padding: 22px 15px 35px;
+  color: #6d725f;
+  font-family: Georgia, serif;
+  font-size: 14px;
+}
+
+@keyframes muncul {
+  from {opacity:0; transform:translateY(12px);}
+  to {opacity:1; transform:translateY(0);}
+}
 </style>
 </head>
+
 <body>
-<header>
-<h1>REKENING LUKMANTO</h1>
-<p>Silakan pilih rekening untuk pembayaran</p>
+<header class="hero">
+  <div class="moon">☪</div>
+  <h1>Rekening Pembayaran</h1>
+  <p>Atas Nama <strong>LUKMANTO</strong></p>
+  <p>Mudah • Aman • Praktis</p>
 </header>
-<main>
-<div id="accounts"></div>
-<div class="card">
-<strong>Petunjuk pembayaran</strong>
-<p>Pastikan nama penerima adalah LUKMANTO sebelum melakukan transfer.</p>
-</div>
+
+<main class="container">
+  <p class="notice">
+    Silakan pilih rekening tujuan, lalu tekan tombol salin.
+  </p>
+
+  <section class="card">
+    <div class="bank">
+      <div class="logo mega">M</div>
+      <div>
+        <h2>Bank Mega Syariah</h2>
+        <div class="owner">Atas nama LUKMANTO</div>
+      </div>
+    </div>
+    <div class="number">2013703206</div>
+    <button class="copy" onclick="salin('2013703206',this)">
+      ▣ Salin nomor rekening
+    </button>
+  </section>
+
+  <section class="card">
+    <div class="bank">
+      <div class="logo shopeepay">S</div>
+      <div>
+        <h2>ShopeePay</h2>
+        <div class="owner">Atas nama LUKMANTO</div>
+      </div>
+    </div>
+    <div class="number">081325707659</div>
+    <button class="copy" onclick="salin('081325707659',this)">
+      ▣ Salin nomor
+    </button>
+  </section>
+
+  <section class="card">
+    <div class="bank">
+      <div class="logo bri">BRI</div>
+      <div>
+        <h2>Bank BRI</h2>
+        <div class="owner">Atas nama LUKMANTO</div>
+      </div>
+    </div>
+    <div class="number">534601016087538</div>
+    <button class="copy" onclick="salin('534601016087538',this)">
+      ▣ Salin nomor rekening
+    </button>
+  </section>
+
+  <section class="card">
+    <div class="bank">
+      <div class="logo sea">S</div>
+      <div>
+        <h2>SeaBank</h2>
+        <div class="owner">Atas nama LUKMANTO</div>
+      </div>
+    </div>
+    <div class="number">901178159236</div>
+    <button class="copy" onclick="salin('901178159236',this)">
+      ▣ Salin nomor rekening
+    </button>
+  </section>
+
+  <section class="card">
+    <div class="bank">
+      <div class="logo dana">D</div>
+      <div>
+        <h2>DANA</h2>
+        <div class="owner">Atas nama LUKMANTO</div>
+      </div>
+    </div>
+    <div class="number">081325707659</div>
+    <button class="copy" onclick="salin('081325707659',this)">
+      ▣ Salin nomor
+    </button>
+  </section>
 </main>
-<footer>Terima kasih atas pembayaran Anda.</footer>
+
+<footer class="footer">
+  ✦ Semoga setiap transaksi menjadi keberkahan ✦
+  <br><br>
+  Terima kasih telah melakukan pembayaran.
+</footer>
+
 <script>
+async function salin(nomor, tombol) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(nomor);
+    } else {
+      const input = document.createElement("textarea");
+      input.value = nomor;
+      input.style.position = "fixed";
+      input.style.opacity = "0";
+      document.body.appendChild(input);
+      input.select();
+      if (!document.execCommand("copy")) {
+        throw new Error("Gagal menyalin");
+      }
+      input.remove();
+    }
 
-const rekening = [
-  {
-    bank: "Bank Mega Syariah",
-    nomor: "2013703206"
-  },
-  {
-    bank: "ShopeePay",
-    nomor: "081325707659"
-  },
-  {
-    bank: "BRI",
-    nomor: "5346 0101 6087 538"
-  },
-  {
-    bank: "SeaBank",
-    nomor: "901178159236"
-  },
-  {
-    bank: "DANA",
-    nomor: "081325707659"
+    const teks = tombol.textContent;
+    tombol.textContent = "✓ Berhasil disalin!";
+    setTimeout(() => tombol.textContent = teks, 1800);
+  } catch (e) {
+    alert("Gagal menyalin. Silakan salin nomor secara manual: " + nomor);
   }
-];
-
-const area=document.getElementById("accounts");
-rekening.forEach((r,i)=>{
-area.insertAdjacentHTML("beforeend",`
-<div class="card">
-<div class="bank">${r.bank}</div>
-<div class="owner">Atas nama LUKMANTO</div>
-<div class="number">${r.nomor.startsWith("ISI_")?"Nomor rekening belum diisi":r.nomor}</div>
-<button onclick="salin(${i})">Salin nomor rekening</button>
-</div>`);
-});
-function salin(i){
-const nomor=rekening[i].nomor;
-if(nomor.startsWith("ISI_")){
-alert("Nomor rekening ini belum diisi.");
-return;
-}
-navigator.clipboard.writeText(nomor)
-.then(()=>alert("Nomor rekening berhasil disalin"))
-.catch(()=>alert("Silakan salin nomor secara manual: "+nomor));
 }
 </script>
 </body>
