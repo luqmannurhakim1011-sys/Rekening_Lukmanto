@@ -3,9 +3,9 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f5f0e6">
-<title>Rekening Pembayaran Lukmanto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#123d32">
+<title>Rekening Pembayaran | Lukmanto</title>
 
 <style>
 * {
@@ -17,20 +17,20 @@ html, body {
   padding: 0;
   width: 100%;
   min-height: 100%;
-  background: #f5f0e6;
 }
 
 body {
+  background: #f5f0e6;
   font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
 
-.poster-container {
+.page {
   position: relative;
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
   line-height: 0;
-  overflow: hidden;
 }
 
 .poster {
@@ -38,187 +38,150 @@ body {
   width: 100%;
   height: auto;
   margin: 0;
+  object-fit: contain;
 }
 
 .tap {
   position: absolute;
   display: block;
   border: 0;
-  padding: 0;
-  margin: 0;
   background: transparent;
+  padding: 0;
   cursor: pointer;
+  border-radius: 12px;
   -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
 }
 
 .tap:focus-visible {
-  outline: 2px dashed #176b4d;
-  outline-offset: 2px;
-  border-radius: 6px;
+  outline: 3px solid #176b4d;
 }
+
+/* Area tombol mengikuti posisi pada gambar PNG.
+   Sesuaikan persentasenya jika posisi tombol berbeda. */
+.mega-number  { left: 48%; top: 21%; width: 34%; height: 4%; }
+.mega-copy    { left: 86%; top: 21%; width: 10%; height: 4%; }
+
+.shopee-number { left: 48%; top: 35%; width: 34%; height: 4%; }
+.shopee-copy   { left: 86%; top: 35%; width: 10%; height: 4%; }
+
+.bri-number { left: 48%; top: 48%; width: 34%; height: 4%; }
+.bri-copy   { left: 86%; top: 48%; width: 10%; height: 4%; }
+
+.sea-number { left: 48%; top: 62%; width: 34%; height: 4%; }
+.sea-copy   { left: 86%; top: 62%; width: 10%; height: 4%; }
+
+.dana-number { left: 48%; top: 76%; width: 34%; height: 4%; }
+.dana-copy   { left: 86%; top: 76%; width: 10%; height: 4%; }
 
 .toast {
   position: fixed;
   left: 50%;
-  bottom: 24px;
-  transform: translate(-50%, 15px);
-  z-index: 10;
-  padding: 13px 20px;
-  border-radius: 12px;
+  bottom: 25px;
+  transform: translateX(-50%);
+  background: #123d32;
   color: white;
-  background: #176b4d;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 15px;
   line-height: 1.4;
-  text-align: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: .2s ease;
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px #0003;
+  display: none;
+  z-index: 10;
   width: max-content;
-  max-width: calc(100% - 30px);
+  max-width: 90%;
 }
 
 .toast.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, 0);
+  display: block;
 }
 
 @media (min-width: 701px) {
-  .poster-container {
-    box-shadow: 0 0 25px #00000010;
+  .page {
+    box-shadow: 0 0 25px #0001;
   }
 }
 </style>
 </head>
 
 <body>
-
-<main class="poster-container">
-
-  <!-- Gambar utama. Pastikan nama file sama persis. -->
+<main class="page">
   <img
     class="poster"
     src="./rekening-bg.png"
-    alt="Poster rekening pembayaran Lukmanto"
-    width="1024"
-    height="1536"
-    fetchpriority="high"
+    alt="Rekening pembayaran Lukmanto"
   >
 
-  <!-- Bank Mega Syariah -->
-  <button class="tap"
-    style="left:48%;top:21%;width:37%;height:4.5%"
+  <button class="tap mega-number"
     aria-label="Salin nomor Bank Mega Syariah"
-    onclick="salin('2013703206','Bank Mega Syariah')">
-  </button>
-
-  <button class="tap"
-    style="left:85%;top:21%;width:11%;height:4.5%"
+    onclick="salin('2013703206')"></button>
+  <button class="tap mega-copy"
     aria-label="Salin nomor Bank Mega Syariah"
-    onclick="salin('2013703206','Bank Mega Syariah')">
-  </button>
+    onclick="salin('2013703206')"></button>
 
-  <!-- ShopeePay -->
-  <button class="tap"
-    style="left:48%;top:35%;width:37%;height:4.5%"
+  <button class="tap shopee-number"
     aria-label="Salin nomor ShopeePay"
-    onclick="salin('081325707659','ShopeePay')">
-  </button>
-
-  <button class="tap"
-    style="left:85%;top:35%;width:11%;height:4.5%"
+    onclick="salin('081325707659')"></button>
+  <button class="tap shopee-copy"
     aria-label="Salin nomor ShopeePay"
-    onclick="salin('081325707659','ShopeePay')">
-  </button>
+    onclick="salin('081325707659')"></button>
 
-  <!-- BRI -->
-  <button class="tap"
-    style="left:48%;top:48.5%;width:37%;height:4.5%"
+  <button class="tap bri-number"
     aria-label="Salin nomor BRI"
-    onclick="salin('534601016087538','BRI')">
-  </button>
-
-  <button class="tap"
-    style="left:85%;top:48.5%;width:11%;height:4.5%"
+    onclick="salin('534601016087538')"></button>
+  <button class="tap bri-copy"
     aria-label="Salin nomor BRI"
-    onclick="salin('534601016087538','BRI')">
-  </button>
+    onclick="salin('534601016087538')"></button>
 
-  <!-- SeaBank -->
-  <button class="tap"
-    style="left:48%;top:62.5%;width:37%;height:4.5%"
+  <button class="tap sea-number"
     aria-label="Salin nomor SeaBank"
-    onclick="salin('901178159236','SeaBank')">
-  </button>
-
-  <button class="tap"
-    style="left:85%;top:62.5%;width:11%;height:4.5%"
+    onclick="salin('901178159236')"></button>
+  <button class="tap sea-copy"
     aria-label="Salin nomor SeaBank"
-    onclick="salin('901178159236','SeaBank')">
-  </button>
+    onclick="salin('901178159236')"></button>
 
-  <!-- DANA -->
-  <button class="tap"
-    style="left:48%;top:76%;width:37%;height:4.5%"
+  <button class="tap dana-number"
     aria-label="Salin nomor DANA"
-    onclick="salin('081325707659','DANA')">
-  </button>
-
-  <button class="tap"
-    style="left:85%;top:76%;width:11%;height:4.5%"
+    onclick="salin('081325707659')"></button>
+  <button class="tap dana-copy"
     aria-label="Salin nomor DANA"
-    onclick="salin('081325707659','DANA')">
-  </button>
-
+    onclick="salin('081325707659')"></button>
 </main>
 
-<div id="toast" class="toast" role="status"
-  aria-live="polite"></div>
+<div id="toast" class="toast" role="status"></div>
 
 <script>
-let toastTimer;
+let timerToast;
 
-function tampilkanPesan(pesan) {
-  const toast = document.getElementById('toast');
-  toast.textContent = pesan;
-  toast.classList.add('show');
-
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2000);
-}
-
-async function salin(nomor, nama) {
+async function salin(nomor) {
   try {
     if (navigator.clipboard && window.isSecureContext) {
       await navigator.clipboard.writeText(nomor);
     } else {
-      const area = document.createElement('textarea');
-      area.value = nomor;
-      area.setAttribute('readonly', '');
-      area.style.position = 'fixed';
-      area.style.left = '-9999px';
+      const input = document.createElement("textarea");
+      input.value = nomor;
+      input.style.position = "fixed";
+      input.style.left = "-9999px";
+      document.body.appendChild(input);
+      input.select();
 
-      document.body.appendChild(area);
-      area.select();
+      const berhasil = document.execCommand("copy");
+      input.remove();
 
-      const berhasil = document.execCommand('copy');
-      area.remove();
-
-      if (!berhasil) {
-        throw new Error('Salin gagal');
-      }
+      if (!berhasil) throw new Error("Gagal menyalin");
     }
 
-    tampilkanPesan('✓ Nomor ' + nama + ' berhasil disalin!');
-  } catch (error) {
-    tampilkanPesan('Salin gagal. Tekan lama nomor untuk menyalin.');
+    const toast = document.getElementById("toast");
+    toast.textContent = "✓ Nomor " + nomor + " berhasil disalin";
+    toast.classList.add("show");
+
+    clearTimeout(timerToast);
+    timerToast = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2200);
+  } catch (e) {
+    prompt("Salin nomor berikut:", nomor);
   }
 }
 </script>
-
 </body>
 </html>
