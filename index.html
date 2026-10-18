@@ -34,13 +34,30 @@ footer{text-align:center;color:#64748b;font-size:13px;padding:20px}
 </main>
 <footer>Terima kasih atas pembayaran Anda.</footer>
 <script>
+
 const rekening = [
-{bank:"Bank 1",nomor:"ISI_NOMOR_REKENING_1"},
-{bank:"Bank 2",nomor:"ISI_NOMOR_REKENING_2"},
-{bank:"Bank 3",nomor:"ISI_NOMOR_REKENING_3"},
-{bank:"Bank 4",nomor:"ISI_NOMOR_REKENING_4"},
-{bank:"Bank 5",nomor:"ISI_NOMOR_REKENING_5"}
+  {
+    bank: "Bank Mega Syariah",
+    nomor: "2013703206"
+  },
+  {
+    bank: "ShopeePay",
+    nomor: "081325707659"
+  },
+  {
+    bank: "BRI",
+    nomor: "5346 0101 6087 538"
+  },
+  {
+    bank: "SeaBank",
+    nomor: "901178159236"
+  },
+  {
+    bank: "DANA",
+    nomor: "081325707659"
+  }
 ];
+
 const area=document.getElementById("accounts");
 rekening.forEach((r,i)=>{
 area.insertAdjacentHTML("beforeend",`
