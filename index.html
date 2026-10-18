@@ -24,7 +24,7 @@ body {
   padding: 42px 18px 38px;
   color: #fff8e8;
   background:
-    linear-gradient(135deg, #103c32eF, #17634ee8),
+    linear-gradient(135deg, #103c32ed, #17634ee8),
     url("https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1200&q=85")
     center/cover;
 }
@@ -90,22 +90,14 @@ body {
 }
 
 .logo {
-  width: 54px;
-  height: 54px;
+  width: 76px;
+  height: 76px;
   border-radius: 14px;
-  display: grid;
-  place-items: center;
-  color: white;
-  font-size: 19px;
-  font-weight: bold;
+  object-fit: contain;
+  background: white;
+  padding: 5px;
   flex-shrink: 0;
 }
-
-.mega { background: linear-gradient(135deg,#252525,#9b741e); }
-.shopeepay { background: linear-gradient(135deg,#ed4d22,#ff8a35); }
-.bri { background: linear-gradient(135deg,#0754a7,#168ce1); }
-.sea { background: linear-gradient(135deg,#f04b19,#ff963f); }
-.dana { background: linear-gradient(135deg,#0875ed,#42b6ff); }
 
 .bank h2 {
   font-size: 19px;
@@ -150,16 +142,39 @@ body {
   color: #6d725f;
   font-family: Georgia, serif;
   font-size: 14px;
+  line-height: 1.7;
 }
 
 @keyframes muncul {
-  from {opacity:0; transform:translateY(12px);}
-  to {opacity:1; transform:translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 25px;
+  }
+
+  .logo {
+    width: 62px;
+    height: 62px;
+  }
+
+  .number {
+    font-size: 20px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header class="hero">
   <div class="moon">☪</div>
   <h1>Rekening Pembayaran</h1>
@@ -168,79 +183,111 @@ body {
 </header>
 
 <main class="container">
+
   <p class="notice">
     Silakan pilih rekening tujuan, lalu tekan tombol salin.
   </p>
 
+  <!-- BANK MEGA SYARIAH -->
   <section class="card">
     <div class="bank">
-      <div class="logo mega">M</div>
+      <img class="logo"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Bank_Mega_Syariah_logo.svg"
+        alt="Logo Bank Mega Syariah">
       <div>
         <h2>Bank Mega Syariah</h2>
         <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
+
     <div class="number">2013703206</div>
-    <button class="copy" onclick="salin('2013703206',this)">
+
+    <button class="copy"
+      onclick="salin('2013703206',this)">
       ▣ Salin nomor rekening
     </button>
   </section>
 
+  <!-- SHOPEEPAY -->
   <section class="card">
     <div class="bank">
-      <div class="logo shopeepay">S</div>
+      <img class="logo"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Shopee.svg"
+        alt="Logo ShopeePay">
       <div>
         <h2>ShopeePay</h2>
         <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
+
     <div class="number">081325707659</div>
-    <button class="copy" onclick="salin('081325707659',this)">
+
+    <button class="copy"
+      onclick="salin('081325707659',this)">
       ▣ Salin nomor
     </button>
   </section>
 
+  <!-- BRI -->
   <section class="card">
     <div class="bank">
-      <div class="logo bri">BRI</div>
+      <img class="logo"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/BRI_logo.svg"
+        alt="Logo Bank BRI">
       <div>
         <h2>Bank BRI</h2>
         <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
+
     <div class="number">534601016087538</div>
-    <button class="copy" onclick="salin('534601016087538',this)">
+
+    <button class="copy"
+      onclick="salin('534601016087538',this)">
       ▣ Salin nomor rekening
     </button>
   </section>
 
+  <!-- SEABANK -->
   <section class="card">
     <div class="bank">
-      <div class="logo sea">S</div>
+      <img class="logo"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/SeaBank_logo.svg"
+        alt="Logo SeaBank">
       <div>
         <h2>SeaBank</h2>
         <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
+
     <div class="number">901178159236</div>
-    <button class="copy" onclick="salin('901178159236',this)">
+
+    <button class="copy"
+      onclick="salin('901178159236',this)">
       ▣ Salin nomor rekening
     </button>
   </section>
 
+  <!-- DANA -->
   <section class="card">
     <div class="bank">
-      <div class="logo dana">D</div>
+      <img class="logo"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/DANA_logo.svg"
+        alt="Logo DANA">
       <div>
         <h2>DANA</h2>
         <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
+
     <div class="number">081325707659</div>
-    <button class="copy" onclick="salin('081325707659',this)">
+
+    <button class="copy"
+      onclick="salin('081325707659',this)">
       ▣ Salin nomor
     </button>
   </section>
+
 </main>
 
 <footer class="footer">
@@ -261,19 +308,29 @@ async function salin(nomor, tombol) {
       input.style.opacity = "0";
       document.body.appendChild(input);
       input.select();
-      if (!document.execCommand("copy")) {
+
+      const berhasil = document.execCommand("copy");
+      input.remove();
+
+      if (!berhasil) {
         throw new Error("Gagal menyalin");
       }
-      input.remove();
     }
 
-    const teks = tombol.textContent;
+    const teksAsli = tombol.textContent;
     tombol.textContent = "✓ Berhasil disalin!";
-    setTimeout(() => tombol.textContent = teks, 1800);
+
+    setTimeout(() => {
+      tombol.textContent = teksAsli;
+    }, 1800);
+
   } catch (e) {
-    alert("Gagal menyalin. Silakan salin nomor secara manual: " + nomor);
+    alert(
+      "Gagal menyalin. Silakan salin nomor secara manual: " + nomor
+    );
   }
 }
 </script>
+
 </body>
 </html>
