@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#123d32">
-
 <title>Rekening Pembayaran | Lukmanto</title>
 
 <style>
@@ -13,8 +12,7 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -23,16 +21,15 @@ body {
 
 html {
   background: #f5f0e6;
-  scroll-behavior: smooth;
 }
 
 body {
-  background: #f5f0e6;
   font-family: Arial, sans-serif;
+  background: #f5f0e6;
   overflow-x: hidden;
 }
 
-/* Wadah gambar */
+/* Gambar memenuhi lebar layar */
 .page {
   position: relative;
   width: 100%;
@@ -43,7 +40,6 @@ body {
   background: #f5f0e6;
 }
 
-/* Gambar utama */
 .poster {
   display: block;
   width: 100%;
@@ -51,110 +47,108 @@ body {
   margin: 0;
   padding: 0;
   border: 0;
-  object-fit: contain;
 }
 
-/* Tombol transparan di atas gambar */
+/* Area tombol transparan */
 .tap {
   position: absolute;
   display: block;
-  padding: 0;
   margin: 0;
+  padding: 0;
   border: 0;
   border-radius: 12px;
   background: transparent;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Efek fokus */
 .tap:focus-visible {
   outline: 3px solid #176b4d;
   outline-offset: 2px;
 }
 
 /*
-  Posisi tombol mengikuti gambar rekening.
-  Angka persentase dihitung dari ukuran keseluruhan PNG.
+  Posisi berdasarkan persentase gambar PNG.
+  Area nomor dan tombol salin dibuat terpisah.
 */
 
-/* Bank Mega Syariah */
+/* BANK MEGA SYARIAH */
 .mega-number {
   left: 35%;
-  top: 30%;
-  width: 37%;
-  height: 4%;
+  top: 36.5%;
+  width: 36%;
+  height: 4.5%;
 }
 
 .mega-copy {
-  left: 74%;
-  top: 30%;
-  width: 22%;
-  height: 4%;
+  left: 73%;
+  top: 34.5%;
+  width: 23%;
+  height: 6%;
 }
 
-/* ShopeePay */
+/* SHOPEEPAY */
 .shopee-number {
   left: 35%;
-  top: 40%;
-  width: 37%;
-  height: 4%;
+  top: 47.5%;
+  width: 36%;
+  height: 4.5%;
 }
 
 .shopee-copy {
-  left: 74%;
-  top: 40%;
-  width: 22%;
-  height: 4%;
+  left: 73%;
+  top: 45.5%;
+  width: 23%;
+  height: 6%;
 }
 
 /* BRI */
 .bri-number {
   left: 35%;
-  top: 50%;
-  width: 37%;
-  height: 4%;
+  top: 58.5%;
+  width: 36%;
+  height: 4.5%;
 }
 
 .bri-copy {
-  left: 74%;
-  top: 50%;
-  width: 22%;
-  height: 4%;
+  left: 73%;
+  top: 56.5%;
+  width: 23%;
+  height: 6%;
 }
 
-/* SeaBank */
+/* SEABANK */
 .sea-number {
   left: 35%;
-  top: 60%;
-  width: 37%;
-  height: 4%;
+  top: 69.5%;
+  width: 36%;
+  height: 4.5%;
 }
 
 .sea-copy {
-  left: 74%;
-  top: 60%;
-  width: 22%;
-  height: 4%;
+  left: 73%;
+  top: 67.5%;
+  width: 23%;
+  height: 6%;
 }
 
 /* DANA */
 .dana-number {
   left: 35%;
-  top: 70%;
-  width: 37%;
-  height: 4%;
+  top: 80.5%;
+  width: 36%;
+  height: 4.5%;
 }
 
 .dana-copy {
-  left: 74%;
-  top: 70%;
-  width: 22%;
-  height: 4%;
+  left: 73%;
+  top: 78.5%;
+  width: 23%;
+  height: 6%;
 }
 
-/* Notifikasi salin */
+/* Pesan berhasil disalin */
 .toast {
   position: fixed;
   left: 50%;
@@ -165,31 +159,24 @@ body {
   padding: 13px 18px;
   border-radius: 12px;
   background: #123d32;
-  color: #ffffff;
+  color: #fff;
   font-size: 14px;
   font-weight: bold;
   line-height: 1.5;
   text-align: center;
   box-shadow: 0 5px 20px #0003;
-  z-index: 100;
   display: none;
+  z-index: 100;
 }
 
 .toast.show {
   display: block;
 }
 
-/* Tampilan komputer */
+/* Tampilan layar besar */
 @media (min-width: 701px) {
   .page {
     box-shadow: 0 0 25px #00000012;
-  }
-}
-
-/* Mengurangi animasi bagi pengguna yang memilihnya */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
   }
 }
 </style>
@@ -199,100 +186,76 @@ body {
 
 <main class="page">
 
-  <!-- Pastikan nama file sama persis -->
   <img
+    id="poster"
     class="poster"
     src="./rekening-bg.png"
-    alt="Rekening pembayaran atas nama Lukmanto"
+    alt="Rekening pembayaran Lukmanto"
     draggable="false"
   >
 
   <!-- Bank Mega Syariah -->
-  <button
-    type="button"
+  <button type="button"
     class="tap mega-number"
     aria-label="Salin nomor Bank Mega Syariah"
-    onclick="salin('2013703206')">
-  </button>
+    onclick="salin('2013703206')"></button>
 
-  <button
-    type="button"
+  <button type="button"
     class="tap mega-copy"
     aria-label="Salin nomor Bank Mega Syariah"
-    onclick="salin('2013703206')">
-  </button>
+    onclick="salin('2013703206')"></button>
 
   <!-- ShopeePay -->
-  <button
-    type="button"
+  <button type="button"
     class="tap shopee-number"
     aria-label="Salin nomor ShopeePay"
-    onclick="salin('081325707659')">
-  </button>
+    onclick="salin('081325707659')"></button>
 
-  <button
-    type="button"
+  <button type="button"
     class="tap shopee-copy"
     aria-label="Salin nomor ShopeePay"
-    onclick="salin('081325707659')">
-  </button>
+    onclick="salin('081325707659')"></button>
 
   <!-- BRI -->
-  <button
-    type="button"
+  <button type="button"
     class="tap bri-number"
     aria-label="Salin nomor BRI"
-    onclick="salin('534601016087538')">
-  </button>
+    onclick="salin('534601016087538')"></button>
 
-  <button
-    type="button"
+  <button type="button"
     class="tap bri-copy"
     aria-label="Salin nomor BRI"
-    onclick="salin('534601016087538')">
-  </button>
+    onclick="salin('534601016087538')"></button>
 
   <!-- SeaBank -->
-  <button
-    type="button"
+  <button type="button"
     class="tap sea-number"
     aria-label="Salin nomor SeaBank"
-    onclick="salin('901178159236')">
-  </button>
+    onclick="salin('901178159236')"></button>
 
-  <button
-    type="button"
+  <button type="button"
     class="tap sea-copy"
     aria-label="Salin nomor SeaBank"
-    onclick="salin('901178159236')">
-  </button>
+    onclick="salin('901178159236')"></button>
 
   <!-- DANA -->
-  <button
-    type="button"
+  <button type="button"
     class="tap dana-number"
     aria-label="Salin nomor DANA"
-    onclick="salin('081325707659')">
-  </button>
+    onclick="salin('081325707659')"></button>
 
-  <button
-    type="button"
+  <button type="button"
     class="tap dana-copy"
     aria-label="Salin nomor DANA"
-    onclick="salin('081325707659')">
-  </button>
+    onclick="salin('081325707659')"></button>
 
 </main>
 
-<div
-  id="toast"
-  class="toast"
-  role="status"
-  aria-live="polite">
-</div>
+<div id="toast" class="toast" role="status"
+     aria-live="polite"></div>
 
 <script>
-let timerToast;
+let toastTimer;
 
 async function salin(nomor) {
   try {
@@ -300,16 +263,14 @@ async function salin(nomor) {
       await navigator.clipboard.writeText(nomor);
     } else {
       const input = document.createElement("textarea");
-
       input.value = nomor;
-      input.setAttribute("readonly", "");
+      input.readOnly = true;
       input.style.position = "fixed";
       input.style.left = "-9999px";
-      input.style.top = "0";
 
       document.body.appendChild(input);
       input.select();
-      input.setSelectionRange(0, input.value.length);
+      input.setSelectionRange(0, nomor.length);
 
       const berhasil = document.execCommand("copy");
       input.remove();
@@ -319,24 +280,25 @@ async function salin(nomor) {
       }
     }
 
-    tampilkanPesan("✓ Nomor " + nomor + " berhasil disalin");
+    const toast = document.getElementById("toast");
+    toast.textContent = "✓ Nomor " + nomor + " berhasil disalin";
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2200);
+
   } catch (error) {
-    prompt("Silakan salin nomor berikut:", nomor);
+    prompt("Salin nomor rekening berikut:", nomor);
   }
 }
 
-function tampilkanPesan(pesan) {
-  const toast = document.getElementById("toast");
-
-  toast.textContent = pesan;
-  toast.classList.add("show");
-
-  clearTimeout(timerToast);
-
-  timerToast = setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2200);
-}
+/* Pastikan file gambar berhasil dimuat */
+document.getElementById("poster").addEventListener("error", function() {
+  document.body.style.background = "#f5f0e6";
+  alert("Gambar tidak ditemukan. Pastikan nama file rekening-bg.png benar.");
+});
 </script>
 
 </body>
