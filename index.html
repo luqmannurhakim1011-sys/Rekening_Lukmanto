@@ -8,329 +8,301 @@
 <title>Rekening Pembayaran | Lukmanto</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:#24362f;
+  background:#f5f0e5;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: #26352e;
-  background: #f5f0e6;
+.hero{
+  position:relative;
+  text-align:center;
+  padding:40px 16px 35px;
+  color:#fff8e8;
+  background:linear-gradient(135deg,#103c32,#217052);
+  overflow:hidden;
 }
 
-.hero {
-  text-align: center;
-  padding: 42px 18px 38px;
-  color: #fff8e8;
-  background:
-    linear-gradient(135deg, #103c32ed, #17634ee8),
-    url("https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1200&q=85")
-    center/cover;
+.hero:before,.hero:after{
+  content:"✦";
+  position:absolute;
+  color:#e5cb8a;
+  font-size:85px;
+  opacity:.22;
+}
+.hero:before{left:-12px;top:8px}
+.hero:after{right:-10px;bottom:-20px}
+
+.moon{font-size:38px;color:#f2d28d}
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:30px;
+  margin:10px 0;
+}
+.hero p{margin:7px 0;font-size:15px;line-height:1.6}
+
+.container{
+  max-width:600px;
+  margin:24px auto;
+  padding:0 15px;
 }
 
-.moon {
-  font-size: 43px;
-  margin-bottom: 8px;
+.notice{
+  text-align:center;
+  color:#78694f;
+  font-size:14px;
+  line-height:1.6;
+  margin:22px 8px;
 }
 
-.hero h1 {
-  font-family: Georgia, serif;
-  font-size: 30px;
-  margin: 0 0 12px;
+.card{
+  position:relative;
+  overflow:hidden;
+  margin-bottom:18px;
+  padding:22px 20px;
+  border:1px solid #e7decd;
+  border-radius:25px;
+  background:#fff;
+  box-shadow:0 8px 25px #43341a10;
+  animation:show .5s ease both;
 }
 
-.hero p {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.7;
+.card:after{
+  content:"✦";
+  position:absolute;
+  right:13px;
+  top:12px;
+  color:#e9dfc5;
+  font-size:65px;
+  pointer-events:none;
 }
 
-.container {
-  max-width: 600px;
-  margin: 22px auto;
-  padding: 0 15px;
+.bank{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  position:relative;
+  z-index:1;
 }
 
-.notice {
-  text-align: center;
-  color: #786344;
-  font-size: 13px;
-  margin: 20px 0;
+.logo{
+  width:76px;
+  height:66px;
+  border-radius:17px;
+  flex-shrink:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-weight:900;
+  font-size:25px;
+  letter-spacing:-1px;
+  box-shadow:inset 0 1px 1px #ffffff55;
 }
 
-.card {
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 17px;
-  padding: 21px;
-  border-radius: 20px;
-  background: white;
-  box-shadow: 0 7px 22px #26352e12;
-  border: 1px solid #e8e0d2;
-  animation: muncul .6s ease both;
+.mega{
+  background:linear-gradient(135deg,#151515,#393126);
+  color:#f4bd36;
+  font-size:31px;
+  border:1px solid #b18b35;
+}
+.shopeepay{
+  background:linear-gradient(135deg,#ed4522,#ff8738);
+}
+.bri{
+  background:linear-gradient(135deg,#064d9e,#168ce8);
+  font-style:italic;
+  font-size:24px;
+}
+.sea{
+  background:linear-gradient(135deg,#f04b18,#ff963e);
+  font-size:32px;
+}
+.dana{
+  background:linear-gradient(135deg,#0875ed,#3eb9ff);
+  font-size:23px;
+  letter-spacing:1px;
 }
 
-.card::after {
-  content: "✦";
-  position: absolute;
-  right: 13px;
-  top: 7px;
-  font-size: 75px;
-  color: #d6bd8350;
-  pointer-events: none;
+.bank h2{
+  font-size:19px;
+  margin:0 0 7px;
+  line-height:1.3;
+}
+.owner{color:#7b8580;font-size:13px}
+
+.number{
+  position:relative;
+  z-index:1;
+  font-size:clamp(21px,5.5vw,27px);
+  font-weight:800;
+  letter-spacing:1px;
+  overflow-wrap:anywhere;
+  margin:24px 0 19px;
 }
 
-.bank {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  position: relative;
-  z-index: 1;
+.copy{
+  position:relative;
+  z-index:1;
+  border:0;
+  border-radius:12px;
+  padding:14px 17px;
+  min-height:50px;
+  color:white;
+  background:#176b4d;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 3px 8px #176b4d20;
+}
+.copy:active{transform:scale(.97)}
+.copy.success{background:#245caa}
+
+.footer{
+  text-align:center;
+  padding:20px 18px 38px;
+  color:#716e5b;
+  font-family:Georgia,serif;
+  font-size:14px;
+  line-height:1.9;
 }
 
-.logo {
-  width: 76px;
-  height: 76px;
-  border-radius: 14px;
-  object-fit: contain;
-  background: white;
-  padding: 5px;
-  flex-shrink: 0;
+@keyframes show{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-.bank h2 {
-  font-size: 19px;
-  margin: 0 0 5px;
-}
-
-.owner {
-  color: #7c8581;
-  font-size: 13px;
-}
-
-.number {
-  position: relative;
-  z-index: 1;
-  font-size: 23px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  overflow-wrap: anywhere;
-  margin: 21px 0 17px;
-}
-
-.copy {
-  position: relative;
-  z-index: 1;
-  border: 0;
-  border-radius: 11px;
-  padding: 13px 17px;
-  color: white;
-  background: #176b4d;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.copy:active {
-  transform: scale(.97);
-}
-
-.footer {
-  text-align: center;
-  padding: 22px 15px 35px;
-  color: #6d725f;
-  font-family: Georgia, serif;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-@keyframes muncul {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 380px) {
-  .hero h1 {
-    font-size: 25px;
-  }
-
-  .logo {
-    width: 62px;
-    height: 62px;
-  }
-
-  .number {
-    font-size: 20px;
-  }
+@media(min-width:480px){
+  .card{padding:25px}
+  .logo{width:86px;height:72px}
 }
 </style>
 </head>
 
 <body>
-
 <header class="hero">
   <div class="moon">☪</div>
   <h1>Rekening Pembayaran</h1>
   <p>Atas Nama <strong>LUKMANTO</strong></p>
-  <p>Mudah • Aman • Praktis</p>
+  <p>✦ Mudah • Aman • Praktis ✦</p>
 </header>
 
 <main class="container">
-
   <p class="notice">
-    Silakan pilih rekening tujuan, lalu tekan tombol salin.
+    Silakan pilih rekening tujuan pembayaran,
+    kemudian tekan tombol untuk menyalin nomor.
   </p>
 
-  <!-- BANK MEGA SYARIAH -->
   <section class="card">
     <div class="bank">
-      <img class="logo"
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/Bank_Mega_Syariah_logo.svg"
-        alt="Logo Bank Mega Syariah">
+      <div class="logo mega">M✦</div>
       <div>
         <h2>Bank Mega Syariah</h2>
         <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
-
     <div class="number">2013703206</div>
-
-    <button class="copy"
-      onclick="salin('2013703206',this)">
+    <button class="copy" onclick="salin('2013703206',this)">
       ▣ Salin nomor rekening
     </button>
   </section>
 
-  <!-- SHOPEEPAY -->
   <section class="card">
     <div class="bank">
-      <img class="logo"
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/Shopee.svg"
-        alt="Logo ShopeePay">
+      <div class="logo shopeepay">S</div>
       <div>
         <h2>ShopeePay</h2>
         <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
-
     <div class="number">081325707659</div>
-
-    <button class="copy"
-      onclick="salin('081325707659',this)">
+    <button class="copy" onclick="salin('081325707659',this)">
       ▣ Salin nomor
     </button>
   </section>
 
-  <!-- BRI -->
   <section class="card">
     <div class="bank">
-      <img class="logo"
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/BRI_logo.svg"
-        alt="Logo Bank BRI">
+      <div class="logo bri">BRI</div>
       <div>
         <h2>Bank BRI</h2>
         <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
-
     <div class="number">534601016087538</div>
-
-    <button class="copy"
-      onclick="salin('534601016087538',this)">
+    <button class="copy" onclick="salin('534601016087538',this)">
       ▣ Salin nomor rekening
     </button>
   </section>
 
-  <!-- SEABANK -->
   <section class="card">
     <div class="bank">
-      <img class="logo"
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/SeaBank_logo.svg"
-        alt="Logo SeaBank">
+      <div class="logo sea">S</div>
       <div>
         <h2>SeaBank</h2>
         <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
-
     <div class="number">901178159236</div>
-
-    <button class="copy"
-      onclick="salin('901178159236',this)">
+    <button class="copy" onclick="salin('901178159236',this)">
       ▣ Salin nomor rekening
     </button>
   </section>
 
-  <!-- DANA -->
   <section class="card">
     <div class="bank">
-      <img class="logo"
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/DANA_logo.svg"
-        alt="Logo DANA">
+      <div class="logo dana">DANA</div>
       <div>
         <h2>DANA</h2>
         <div class="owner">Atas nama LUKMANTO</div>
       </div>
     </div>
-
     <div class="number">081325707659</div>
-
-    <button class="copy"
-      onclick="salin('081325707659',this)">
+    <button class="copy" onclick="salin('081325707659',this)">
       ▣ Salin nomor
     </button>
   </section>
-
 </main>
 
 <footer class="footer">
   ✦ Semoga setiap transaksi menjadi keberkahan ✦
-  <br><br>
+  <br>
   Terima kasih telah melakukan pembayaran.
 </footer>
 
 <script>
-async function salin(nomor, tombol) {
-  try {
-    if (navigator.clipboard && window.isSecureContext) {
+async function salin(nomor,tombol){
+  const teksAwal=tombol.textContent;
+
+  try{
+    if(navigator.clipboard && window.isSecureContext){
       await navigator.clipboard.writeText(nomor);
-    } else {
-      const input = document.createElement("textarea");
-      input.value = nomor;
-      input.style.position = "fixed";
-      input.style.opacity = "0";
+    }else{
+      const input=document.createElement("textarea");
+      input.value=nomor;
+      input.style.position="fixed";
+      input.style.left="-9999px";
       document.body.appendChild(input);
       input.select();
-
-      const berhasil = document.execCommand("copy");
+      const berhasil=document.execCommand("copy");
       input.remove();
-
-      if (!berhasil) {
-        throw new Error("Gagal menyalin");
-      }
+      if(!berhasil) throw new Error("Gagal menyalin");
     }
 
-    const teksAsli = tombol.textContent;
-    tombol.textContent = "✓ Berhasil disalin!";
+    tombol.textContent="✓ Berhasil disalin!";
+    tombol.classList.add("success");
 
-    setTimeout(() => {
-      tombol.textContent = teksAsli;
-    }, 1800);
-
-  } catch (e) {
-    alert(
-      "Gagal menyalin. Silakan salin nomor secara manual: " + nomor
-    );
+    setTimeout(()=>{
+      tombol.textContent=teksAwal;
+      tombol.classList.remove("success");
+    },1800);
+  }catch(e){
+    alert("Gagal menyalin. Silakan salin nomor secara manual: "+nomor);
   }
 }
 </script>
-
 </body>
 </html>
