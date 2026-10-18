@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#123d32">
+
 <title>Rekening Pembayaran | Lukmanto</title>
 
 <style>
@@ -12,11 +13,17 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100%;
+}
+
+html {
+  background: #f5f0e6;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -25,129 +32,264 @@ body {
   overflow-x: hidden;
 }
 
+/* Wadah gambar */
 .page {
   position: relative;
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
+  padding: 0;
   line-height: 0;
+  background: #f5f0e6;
 }
 
+/* Gambar utama */
 .poster {
   display: block;
   width: 100%;
   height: auto;
   margin: 0;
+  padding: 0;
+  border: 0;
   object-fit: contain;
 }
 
+/* Tombol transparan di atas gambar */
 .tap {
   position: absolute;
   display: block;
-  border: 0;
-  background: transparent;
   padding: 0;
-  cursor: pointer;
+  margin: 0;
+  border: 0;
   border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
+/* Efek fokus */
 .tap:focus-visible {
   outline: 3px solid #176b4d;
+  outline-offset: 2px;
 }
 
-/* Area tombol mengikuti posisi pada gambar PNG.
-   Sesuaikan persentasenya jika posisi tombol berbeda. */
-.mega-number  { left: 48%; top: 21%; width: 34%; height: 4%; }
-.mega-copy    { left: 86%; top: 21%; width: 10%; height: 4%; }
+/*
+  Posisi tombol mengikuti gambar rekening.
+  Angka persentase dihitung dari ukuran keseluruhan PNG.
+*/
 
-.shopee-number { left: 48%; top: 35%; width: 34%; height: 4%; }
-.shopee-copy   { left: 86%; top: 35%; width: 10%; height: 4%; }
+/* Bank Mega Syariah */
+.mega-number {
+  left: 35%;
+  top: 30%;
+  width: 37%;
+  height: 4%;
+}
 
-.bri-number { left: 48%; top: 48%; width: 34%; height: 4%; }
-.bri-copy   { left: 86%; top: 48%; width: 10%; height: 4%; }
+.mega-copy {
+  left: 74%;
+  top: 30%;
+  width: 22%;
+  height: 4%;
+}
 
-.sea-number { left: 48%; top: 62%; width: 34%; height: 4%; }
-.sea-copy   { left: 86%; top: 62%; width: 10%; height: 4%; }
+/* ShopeePay */
+.shopee-number {
+  left: 35%;
+  top: 40%;
+  width: 37%;
+  height: 4%;
+}
 
-.dana-number { left: 48%; top: 76%; width: 34%; height: 4%; }
-.dana-copy   { left: 86%; top: 76%; width: 10%; height: 4%; }
+.shopee-copy {
+  left: 74%;
+  top: 40%;
+  width: 22%;
+  height: 4%;
+}
 
+/* BRI */
+.bri-number {
+  left: 35%;
+  top: 50%;
+  width: 37%;
+  height: 4%;
+}
+
+.bri-copy {
+  left: 74%;
+  top: 50%;
+  width: 22%;
+  height: 4%;
+}
+
+/* SeaBank */
+.sea-number {
+  left: 35%;
+  top: 60%;
+  width: 37%;
+  height: 4%;
+}
+
+.sea-copy {
+  left: 74%;
+  top: 60%;
+  width: 22%;
+  height: 4%;
+}
+
+/* DANA */
+.dana-number {
+  left: 35%;
+  top: 70%;
+  width: 37%;
+  height: 4%;
+}
+
+.dana-copy {
+  left: 74%;
+  top: 70%;
+  width: 22%;
+  height: 4%;
+}
+
+/* Notifikasi salin */
 .toast {
   position: fixed;
   left: 50%;
-  bottom: 25px;
+  bottom: calc(20px + env(safe-area-inset-bottom));
   transform: translateX(-50%);
-  background: #123d32;
-  color: white;
-  font-size: 15px;
-  line-height: 1.4;
-  padding: 12px 18px;
-  border-radius: 12px;
-  box-shadow: 0 4px 18px #0003;
-  display: none;
-  z-index: 10;
   width: max-content;
   max-width: 90%;
+  padding: 13px 18px;
+  border-radius: 12px;
+  background: #123d32;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  box-shadow: 0 5px 20px #0003;
+  z-index: 100;
+  display: none;
 }
 
 .toast.show {
   display: block;
 }
 
+/* Tampilan komputer */
 @media (min-width: 701px) {
   .page {
-    box-shadow: 0 0 25px #0001;
+    box-shadow: 0 0 25px #00000012;
+  }
+}
+
+/* Mengurangi animasi bagi pengguna yang memilihnya */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 </style>
 </head>
 
 <body>
+
 <main class="page">
+
+  <!-- Pastikan nama file sama persis -->
   <img
     class="poster"
     src="./rekening-bg.png"
-    alt="Rekening pembayaran Lukmanto"
+    alt="Rekening pembayaran atas nama Lukmanto"
+    draggable="false"
   >
 
-  <button class="tap mega-number"
+  <!-- Bank Mega Syariah -->
+  <button
+    type="button"
+    class="tap mega-number"
     aria-label="Salin nomor Bank Mega Syariah"
-    onclick="salin('2013703206')"></button>
-  <button class="tap mega-copy"
+    onclick="salin('2013703206')">
+  </button>
+
+  <button
+    type="button"
+    class="tap mega-copy"
     aria-label="Salin nomor Bank Mega Syariah"
-    onclick="salin('2013703206')"></button>
+    onclick="salin('2013703206')">
+  </button>
 
-  <button class="tap shopee-number"
+  <!-- ShopeePay -->
+  <button
+    type="button"
+    class="tap shopee-number"
     aria-label="Salin nomor ShopeePay"
-    onclick="salin('081325707659')"></button>
-  <button class="tap shopee-copy"
+    onclick="salin('081325707659')">
+  </button>
+
+  <button
+    type="button"
+    class="tap shopee-copy"
     aria-label="Salin nomor ShopeePay"
-    onclick="salin('081325707659')"></button>
+    onclick="salin('081325707659')">
+  </button>
 
-  <button class="tap bri-number"
+  <!-- BRI -->
+  <button
+    type="button"
+    class="tap bri-number"
     aria-label="Salin nomor BRI"
-    onclick="salin('534601016087538')"></button>
-  <button class="tap bri-copy"
+    onclick="salin('534601016087538')">
+  </button>
+
+  <button
+    type="button"
+    class="tap bri-copy"
     aria-label="Salin nomor BRI"
-    onclick="salin('534601016087538')"></button>
+    onclick="salin('534601016087538')">
+  </button>
 
-  <button class="tap sea-number"
+  <!-- SeaBank -->
+  <button
+    type="button"
+    class="tap sea-number"
     aria-label="Salin nomor SeaBank"
-    onclick="salin('901178159236')"></button>
-  <button class="tap sea-copy"
-    aria-label="Salin nomor SeaBank"
-    onclick="salin('901178159236')"></button>
+    onclick="salin('901178159236')">
+  </button>
 
-  <button class="tap dana-number"
+  <button
+    type="button"
+    class="tap sea-copy"
+    aria-label="Salin nomor SeaBank"
+    onclick="salin('901178159236')">
+  </button>
+
+  <!-- DANA -->
+  <button
+    type="button"
+    class="tap dana-number"
     aria-label="Salin nomor DANA"
-    onclick="salin('081325707659')"></button>
-  <button class="tap dana-copy"
+    onclick="salin('081325707659')">
+  </button>
+
+  <button
+    type="button"
+    class="tap dana-copy"
     aria-label="Salin nomor DANA"
-    onclick="salin('081325707659')"></button>
+    onclick="salin('081325707659')">
+  </button>
+
 </main>
 
-<div id="toast" class="toast" role="status"></div>
+<div
+  id="toast"
+  class="toast"
+  role="status"
+  aria-live="polite">
+</div>
 
 <script>
 let timerToast;
@@ -158,30 +300,44 @@ async function salin(nomor) {
       await navigator.clipboard.writeText(nomor);
     } else {
       const input = document.createElement("textarea");
+
       input.value = nomor;
+      input.setAttribute("readonly", "");
       input.style.position = "fixed";
       input.style.left = "-9999px";
+      input.style.top = "0";
+
       document.body.appendChild(input);
       input.select();
+      input.setSelectionRange(0, input.value.length);
 
       const berhasil = document.execCommand("copy");
       input.remove();
 
-      if (!berhasil) throw new Error("Gagal menyalin");
+      if (!berhasil) {
+        throw new Error("Gagal menyalin");
+      }
     }
 
-    const toast = document.getElementById("toast");
-    toast.textContent = "✓ Nomor " + nomor + " berhasil disalin";
-    toast.classList.add("show");
-
-    clearTimeout(timerToast);
-    timerToast = setTimeout(() => {
-      toast.classList.remove("show");
-    }, 2200);
-  } catch (e) {
-    prompt("Salin nomor berikut:", nomor);
+    tampilkanPesan("✓ Nomor " + nomor + " berhasil disalin");
+  } catch (error) {
+    prompt("Silakan salin nomor berikut:", nomor);
   }
 }
+
+function tampilkanPesan(pesan) {
+  const toast = document.getElementById("toast");
+
+  toast.textContent = pesan;
+  toast.classList.add("show");
+
+  clearTimeout(timerToast);
+
+  timerToast = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2200);
+}
 </script>
+
 </body>
 </html>
